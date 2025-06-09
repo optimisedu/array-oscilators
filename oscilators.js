@@ -1,10 +1,11 @@
 // MULTIPLE OSCILATORS IN AN ARRAY. 
-// TODO:
-// Start, Stop
-// Analysernode 
+// could make some cool reece style bass effects with subtractive synthesis
+// increasing the note steps more slowly so pairs of oscilators detuned possitive/negative
+// for a wider, growly wobble effect.
 
 const ac = new AudioContext();
 
+// create an array to hold oscillators
 const osc = [];
 const numOscillators = 8;
 
@@ -12,17 +13,24 @@ const numOscillators = 8;
 const analyser = ac.createAnalyser();
 analyser.fftSize = 2048;
 
-// 0 index, could be used for sub bass,
+const isOdd = (num) => num % 2 !== 0;
+
+
+// 0 index, could be used for sub bass, 
+// however this is mutable.
+// Sub bass should be a set sine wave with minimal effects on it's own chain
 const oscillator = ac.createOscillator();
     oscillator.type = "sine";
-    oscillator.frequency.setValueAtTime(220, ac.currentTime);
+    oscillator.frequency.setValueAtTime(220, ac.currentTime); 
+    oscillator.detune.setValueAtTime(15, ac.currentTime); // detune for odd/even
     oscillator.connect(analyser);
     osc.push(oscillator);
 
 for (let i = 1; i < numOscillators; i++) {
     const oscillator = ac.createOscillator();
     oscillator.type = "sine";
-    oscillator.frequency.setValueAtTime(220 + i * 55, ac.currentTime); // Add harmonics
+    oscillator.frequency.setValueAtTime(220 + i * 55, ac.currentTime); // different frequency for each
+    oscillator.detune.setValueAtTime(isOdd(i) ? 15 : -15, ac.currentTime); // detune for odd/even 
     oscillator.connect(analyser);
     osc.push(oscillator);
 }
