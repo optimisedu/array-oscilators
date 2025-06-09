@@ -5,7 +5,6 @@
 
 const ac = new AudioContext();
 
-// create an array to hold oscillators
 const osc = [];
 const numOscillators = 8;
 
@@ -16,14 +15,14 @@ analyser.fftSize = 2048;
 // 0 index, could be used for sub bass,
 const oscillator = ac.createOscillator();
     oscillator.type = "sine";
-    oscillator.frequency.setValueAtTime(220, ac.currentTime); // different frequency for each
+    oscillator.frequency.setValueAtTime(220, ac.currentTime);
     oscillator.connect(analyser);
     osc.push(oscillator);
 
 for (let i = 1; i < numOscillators; i++) {
     const oscillator = ac.createOscillator();
     oscillator.type = "sine";
-    oscillator.frequency.setValueAtTime(220 + i * 55, ac.currentTime); // different frequency for each
+    oscillator.frequency.setValueAtTime(220 + i * 55, ac.currentTime); // Add harmonics
     oscillator.connect(analyser);
     osc.push(oscillator);
 }
