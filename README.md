@@ -1,4 +1,4 @@
-# array-oscilators
+# Array-Oscilators
 A very basic boilerplate for organising oscilators as a basis of audio synthesis.
 
 ## Visualisation
