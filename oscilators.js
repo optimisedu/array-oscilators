@@ -3,13 +3,16 @@
 // increasing the note steps more slowly so pairs of oscilators detuned possitive/negative
 // for a wider, growly wobble effect.
 
+// changing the start button to push and the stop button to unshift 
+// (i have changed stop to suspend although this is a very basic boiler)
+
 const ac = new AudioContext();
 
-// create an array to hold oscillators
+// create an array to hold oscillators - the array is constant 
 const osc = [];
 const numOscillators = 8;
 
-// create an analyser node
+// create an analyser node for connecting to
 const analyser = ac.createAnalyser();
 analyser.fftSize = 2048;
 
@@ -26,6 +29,10 @@ const oscillator = ac.createOscillator();
     oscillator.connect(analyser);
     osc.push(oscillator);
 
+// easy function conversion not properly implimented
+// as not the scope of this boilerplate
+
+//function fillArr (arr, len){
 for (let i = 1; i < numOscillators; i++) {
     const oscillator = ac.createOscillator();
     oscillator.type = "sine";
@@ -34,6 +41,7 @@ for (let i = 1; i < numOscillators; i++) {
     oscillator.connect(analyser);
     osc.push(oscillator);
 }
+//}
 
 
 // MAIN ANALYSER SETUP
@@ -84,6 +92,6 @@ start.addEventListener("click", () => {
     osc.forEach(o => o.start());
 });
 stop.addEventListener("click", () => {
-    osc.forEach(o => o.stop());
+    osc.forEach(o => o.suspend());
 }
 );
