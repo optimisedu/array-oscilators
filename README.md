@@ -1,5 +1,5 @@
 # Array-Oscilators
-A very basic boilerplate for organising oscilators into an array as a basis of audio synthesis and using thr index to modulate the filter frequency and the positive or negative detuning.
+A very basic boilerplate for organising oscilators into an array as a basis of audio synthesis and using the index to modulate the filter frequency and the positive or negative detuning.
 
 The first index of the array is separated because this allows for some differentiation in methodology. As very basic boilerplate i haven't made the start button as a function that rebuilds the web audio to analyser chain. 
 
