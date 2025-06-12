@@ -16,13 +16,13 @@ Propper exponential frequency shifts.
 
 Widening the noise with panning, splitting the even and odd indexes into frequency pairs left and right would be an easy way to widen the noise. (i have a position based fairly extensive panning project I am now workig backwards and refactoring)
 
-panning between with an lfo.
+Modulation with a lfo.
 
 Building a multi-bandpass filter eq, compressing etc.
 
-addative or subtractive synthesis exploration.
+Addative or subtractive synthesis exploration.
 
-waveshaping, isolating frequency bands.
+Waveshaping, isolating frequency bands.
 
 building my own comb filter
 
